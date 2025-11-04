@@ -46,3 +46,21 @@ void exibir_memoria(Memoria *memoria) {
             printf("[%d] ", memoria->paginas[i]);
     printf("\n");
 }
+
+void exibir_tabela_paginas() {
+    printf("\n%-15s %-15s %-10s\n", "Página Virtual", "Quadro Físico", "Presente");
+    printf("---------------------------------------------\n");
+    for (int i = 0; i < TOTAL_PAGINAS; i++) {
+        printf("%-15d %-15d %-10d\n",
+               tabela_paginas[i].pagina_virtual,
+               tabela_paginas[i].quadro_fisico,
+               tabela_paginas[i].presente);
+    }
+}
+
+int pagina_na_memoria(Memoria *memoria, int pagina) {
+    for (int i = 0; i < TAM_MEMORIA; i++)
+        if (memoria->paginas[i] == pagina)
+            return 1;
+    return 0;
+}
