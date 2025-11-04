@@ -1,2 +1,2 @@
 # SimuladorMemoriaVirtualSO
-Projeto da disciplina de Infraestrutura de Software: simulador de alocação de memória virtual em C com política de substituição de páginas FIFO, uso de swap em disco, tabela de páginas e interface interativa para leitura e escrita em memória.
+Desafio proposto da disciplina de Infraestrutura de Software: simulador de alocação de memória virtual em C com política de substituição de páginas FIFO, uso de swap em disco, tabela de páginas e interface interativa para leitura e escrita em memória.
