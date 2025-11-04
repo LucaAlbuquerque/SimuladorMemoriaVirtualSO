@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define TAM_MEMORIA 3
+#define TAM_DISCO 10
+#define TOTAL_PAGINAS 10
+#define TAM_REFERENCIAS 12
+
+typedef struct {
+    int paginas[TAM_MEMORIA];
+    int contador;
+} Memoria;
+
+typedef struct {
+    int pagina_virtual;
+    int quadro_fisico;
+    int presente;
+} EntradaTabela;
