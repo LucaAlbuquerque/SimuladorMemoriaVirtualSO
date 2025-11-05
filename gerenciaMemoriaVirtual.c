@@ -64,3 +64,21 @@ int pagina_na_memoria(Memoria *memoria, int pagina) {
             return 1;
     return 0;
 }
+
+void substituir_pagina(Memoria *memoria, int pagina) {
+    int posicao = memoria->contador % TAM_MEMORIA;
+    int removida = memoria->paginas[posicao];
+
+    if (removida != -1) {
+        tabela_paginas[removida].presente = 0;
+        tabela_paginas[removida].quadro_fisico = -1;
+        printf("-> Página %d foi movida para o disco.\n", removida);
+    }
+
+    memoria->paginas[posicao] = pagina;
+    tabela_paginas[pagina].presente = 1;
+    tabela_paginas[pagina].quadro_fisico = posicao;
+    memoria->contador++;
+
+    printf("-> Página %d carregada no quadro %d.\n", pagina, posicao);
+}
