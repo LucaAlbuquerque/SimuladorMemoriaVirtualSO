@@ -82,3 +82,35 @@ void substituir_pagina(Memoria *memoria, int pagina) {
 
     printf("-> Página %d carregada no quadro %d.\n", pagina, posicao);
 }
+
+int main() {
+    Memoria memoria;
+    inicializar_memoria(&memoria);
+    inicializar_tabela_paginas();
+
+    int referencias[TAM_REFERENCIAS] = {0, 2, 1, 6, 4, 0, 1, 0, 3, 1, 2, 1};
+    int page_faults = 0;
+
+    printf("=== Simulação do Gerenciador de Memória Virtual (FIFO) ===\n");
+
+    for (int i = 0; i < TAM_REFERENCIAS; i++) {
+        int pagina = referencias[i];
+        printf("\nAcessando página %d...\n", pagina);
+
+        if (!pagina_na_memoria(&memoria, pagina)) {
+            printf("-> Page Fault! Página %d não está na memória.\n", pagina);
+            substituir_pagina(&memoria, pagina);
+            page_faults++;
+        } else {
+            printf("-> Página %d já está carregada.\n", pagina);
+        }
+
+        exibir_memoria(&memoria);
+    }
+
+    printf("\n=== Tabela Final de Páginas ===\n");
+    exibir_tabela_paginas();
+    printf("\nTotal de Page Faults: %d\n", page_faults);
+
+    return 0;
+}
